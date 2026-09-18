@@ -111,7 +111,9 @@ export default function BriefBuilder() {
     data.append('project_size', size);
     data.append('timeline', timeline);
     data.append('message', message);
-    data.append('botcheck', e.currentTarget.botcheck.checked ? 'on' : '');
+    if (e.currentTarget.botcheck?.checked) {
+      data.append('botcheck', 'on');
+    }
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
