@@ -77,7 +77,7 @@ export const projects = [
   {
     title: 'Company CRM',
     tech: ['Next.js', 'Supabase', 'TypeScript'],
-    desc: 'A CRM with separate admin and employee portals: lead pipeline, call logs, attendance, HR, tasks, tickets, sales and documents, with role-based access.',
+    desc: 'A CRM with separate admin, HR and employee portals: lead pipeline, call logs, attendance, tasks, tickets and documents. Try it live with the one-click demo logins.',
     live: 'https://startup-squad-crm.vercel.app',
     link: 'https://github.com/Sahil3785/crm-web-application',
     services: ['frontend', 'database'],
