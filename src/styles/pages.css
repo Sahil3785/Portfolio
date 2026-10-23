@@ -706,3 +706,212 @@
   background-clip: text;
   color: transparent;
 }
+
+/* ==========================================================================
+   Featured project spotlight (home, work)
+   ========================================================================== */
+
+.spot {
+  padding: clamp(60px, 10vh, 120px) 0;
+}
+
+.spot__card {
+  padding: clamp(24px, 4vw, 56px);
+  background: var(--glass-strong);
+}
+
+.spot__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+@media (min-width: 980px) {
+  .spot__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  }
+}
+
+.spot__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+
+.spot__title {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-stretch: 88%;
+  font-size: clamp(2.3rem, 4.6vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+
+.spot__title .mask > span {
+  background: var(--ink-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.spot__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 36px;
+  margin-top: 28px;
+}
+
+.spot__stats li {
+  display: grid;
+  gap: 2px;
+}
+
+.spot__stats b {
+  font-family: var(--f-display);
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1;
+  background: var(--sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.spot__stats span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.spot__shots {
+  position: relative;
+  padding: 0 0 14% 0;
+  transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.7s var(--ease-out);
+}
+
+.spot__shots.is-tilting {
+  transition: transform 0.12s linear;
+}
+
+.spot__shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 16px;
+  border: 1px solid rgba(21, 23, 61, 0.08);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.spot__shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.spot__shot--a {
+  width: 88%;
+}
+
+.spot__shot--b {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 58%;
+  border: 4px solid var(--surface);
+}
+
+.spot__platforms {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin-top: clamp(32px, 5vw, 56px);
+}
+
+@media (min-width: 760px) {
+  .spot__platforms {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.spot__platform {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 24px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: border-color 0.35s, transform 0.5s var(--ease-out), box-shadow 0.5s;
+}
+
+.spot__platform:hover {
+  border-color: var(--line-2);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.spot__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+.spot__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.spot__platform h3 {
+  font-family: var(--f-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.spot__platform p {
+  flex: 1;
+  color: var(--muted);
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+
+.spot__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.spot__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.spot__tech .chip {
+  padding: 6px 13px;
+  font-size: 0.85rem;
+}

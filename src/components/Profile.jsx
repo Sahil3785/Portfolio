@@ -8,7 +8,7 @@ const CODE = [
   [['c', '// how I approach a workflow']],
   [['k', 'class '], ['n', 'Sahil'], ['p', ' {']],
   [['p', '  '], ['f', 'constructor'], ['p', '() {']],
-  [['p', '    '], ['k', 'this'], ['p', '.focus = ['], ['s', '"Automation"'], ['p', ', '], ['s', '"Frontend Architecture"'], ['p', '];']],
+  [['p', '    '], ['k', 'this'], ['p', '.focus = ['], ['s', '"No-code"'], ['p', ', '], ['s', '"Automation"'], ['p', ', '], ['s', '"Apps"'], ['p', '];']],
   [['p', '  }']],
   [['p', '']],
   [['p', '  '], ['f', 'optimize'], ['p', '(workflow) {']],

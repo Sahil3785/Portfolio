@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import CtaBand from '../components/CtaBand';
 import NextPage from '../components/NextPage';
 import PageHeader from '../components/PageHeader';
+import Spotlight from '../components/Spotlight';
 import Work from '../components/Work';
 import { pageFor, projects, services } from '../data/content';
 import { clearIntent, peekIntent } from '../lib/intent';
@@ -40,6 +41,7 @@ export default function WorkPage() {
           ))}
         </div>
       </PageHeader>
+      {filter === 'all' && <Spotlight />}
       <Work key={filter} filter={filter} />
       <CtaBand title="Want something like this?" />
       <NextPage current="/work" />

@@ -11,7 +11,7 @@ function Media({ src, title }) {
   if (/\.(mp4|webm)$/i.test(src)) {
     return <video className="project__media" src={src} autoPlay muted loop playsInline aria-label={`${title} demo`} />;
   }
-  return <img className="project__media" src={src} alt={`${title} demo`} loading="lazy" decoding="async" />;
+  return <img className="project__media" src={src} alt={`${title} screenshot`} loading="lazy" decoding="async" />;
 }
 
 export function Project({ project, headingLevel = 'h2' }) {
@@ -20,14 +20,15 @@ export function Project({ project, headingLevel = 'h2' }) {
   const Preview = PREVIEWS[project.preview];
   const visual = project.media ? <Media src={project.media} title={project.title} /> : Preview ? <Preview /> : null;
   const Heading = headingLevel;
-  const stage = project.link ? (
+  const href = project.live || project.link;
+  const stage = href ? (
     <a
       className="project__stage"
-      href={project.link}
+      href={href}
       target="_blank"
       rel="noreferrer"
       data-cursor="Open"
-      aria-label={`${project.title} on GitHub`}
+      aria-label={project.live ? `Open the live ${project.title}` : `${project.title} on GitHub`}
     >
       {visual}
     </a>
@@ -41,6 +42,7 @@ export function Project({ project, headingLevel = 'h2' }) {
       {stage}
       <div className="project__body">
         <div>
+          {project.badge && <p className="project__badge">{project.badge}</p>}
           {project.services && (
             <p className="project__svc">{project.services.map((id) => serviceFor(id)?.title).filter(Boolean).join(' + ')}</p>
           )}
@@ -54,10 +56,19 @@ export function Project({ project, headingLevel = 'h2' }) {
           <Heading className="project__title">{project.title}</Heading>
           <p className="project__desc">{project.desc}</p>
         </div>
-        {project.link && (
-          <a className="text-link" href={project.link} target="_blank" rel="noreferrer">
-            {project.linkLabel || 'View project'} <ArrowUpRight />
-          </a>
+        {(project.live || project.link) && (
+          <div className="project__links">
+            {project.live && (
+              <a className="text-link" href={project.live} target="_blank" rel="noreferrer">
+                Visit live site <ArrowUpRight />
+              </a>
+            )}
+            {project.link && (
+              <a className="text-link" href={project.link} target="_blank" rel="noreferrer">
+                <GitHub /> View the code
+              </a>
+            )}
+          </div>
         )}
       </div>
     </article>
@@ -70,7 +81,7 @@ export function MoreOnGitHub() {
       <div className="project__body">
         <div>
           <h2 className="project__title project__title--sm">More on GitHub</h2>
-          <p className="project__desc">Recent repositories, from CRM tools to data sync services.</p>
+          <p className="project__desc">More experiments, from brand intake forms to social publishing pages and this portfolio.</p>
           <ul className="repos">
             {repos.map((r) => (
               <li key={r.name}>

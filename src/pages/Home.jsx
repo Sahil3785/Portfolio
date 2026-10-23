@@ -4,10 +4,11 @@ import Calculator from '../components/Calculator';
 import { ArrowRight, Bolt, Cap } from '../components/Icons';
 import NextPage from '../components/NextPage';
 import Services from '../components/Services';
+import Spotlight from '../components/Spotlight';
 import Stream from '../components/Stream';
 import { MaskLines } from '../components/UI';
 import { Project } from '../components/Work';
-import { experience, profile, projects } from '../data/content';
+import { experience, profile, projects, spotlight } from '../data/content';
 import { Link } from '../lib/router';
 
 function FeaturedWork() {
@@ -21,11 +22,14 @@ function FeaturedWork() {
           </Link>
         </div>
         <div className="featured__grid">
-          {projects.slice(0, 2).map((p, i) => (
-            <div key={p.title} data-reveal style={{ '--d': `${i * 0.1}s` }}>
-              <Project project={p} headingLevel="h3" />
-            </div>
-          ))}
+          {projects
+            .filter((p) => p.title !== spotlight.title)
+            .slice(0, 2)
+            .map((p, i) => (
+              <div key={p.title} data-reveal style={{ '--d': `${i * 0.1}s` }}>
+                <Project project={p} headingLevel="h3" />
+              </div>
+            ))}
         </div>
       </div>
     </section>
@@ -83,6 +87,7 @@ export default function Home({ ready }) {
       <Hero ready={ready} />
       <Stream />
       <Services />
+      <Spotlight />
       <Busywork />
       <Calculator />
       <FeaturedWork />

@@ -84,6 +84,27 @@ export const Download = (p) => (
   </svg>
 );
 
+export const Phone = (p) => (
+  <svg {...base} {...p}>
+    <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" />
+    <path d="M10.5 18.5h3" />
+  </svg>
+);
+
+export const Monitor = (p) => (
+  <svg {...base} {...p}>
+    <rect x="3" y="4" width="18" height="12.5" rx="2" />
+    <path d="M9 20.5h6M12 16.5v4" />
+  </svg>
+);
+
+export const Globe = (p) => (
+  <svg {...base} {...p}>
+    <circle cx="12" cy="12" r="8.5" />
+    <path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5s-1.2 6.1-3.8 8.5c-2.6-2.4-3.8-5.2-3.8-8.5S9.4 5.9 12 3.5Z" />
+  </svg>
+);
+
 export const Cart = (p) => (
   <svg {...base} {...p}>
     <path d="M3 4h2.2l2.3 11h10.2l2-8H6.3" />

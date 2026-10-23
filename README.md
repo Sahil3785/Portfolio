@@ -1,6 +1,6 @@
 # buildwithsahil
 
-Portfolio for Sahil, automation and frontend developer. React + Vite, with no UI, routing or animation libraries: every effect is hand-written CSS and a small motion module, so the bundle stays light.
+Portfolio for Sahil, no-code, automation and frontend developer. React + Vite, with no UI, routing or animation libraries: every effect is hand-written CSS and a small motion module, so the bundle stays light.
 
 Live: https://buildwithsahil.me
 
@@ -19,9 +19,9 @@ Requires Node 18 or newer.
 
 | URL           | Page       | What is on it |
 | ------------- | ---------- | ------------- |
-| `/`           | Home       | Rotating-service hero with live workflow and particles, service cards, busywork scroll scene, savings calculator, featured work, intro |
+| `/`           | Home       | Rotating-service hero with live workflow and particles, service cards, featured project spotlight, busywork scroll scene, savings calculator, featured work, intro |
 | `/services`   | Services   | Sticky service tabs, a detailed section per service (what you get, tools, animated preview), project process, calculator, FAQ, call to action |
-| `/work`       | Work       | Filter by service, pinned sideways scroll through projects, GitHub repos |
+| `/work`       | Work       | Featured project spotlight, filter by service, pinned sideways scroll through projects, GitHub repos |
 | `/about`      | About      | Portrait, scroll-lit statement, focus areas, code card, "How I work" |
 | `/experience` | Experience | Timeline with highlights and CV download |
 | `/skills`     | Toolkit    | Tool stream and skills by category |
@@ -55,9 +55,9 @@ booking: 'https://cal.com/your-name/intro',     // any Calendly or Cal.com link
 
 Once filled in, WhatsApp and "Book a call" buttons appear in the dock, the contact page, the call-to-action band and the brief builder. Leave them empty to keep them hidden.
 
-### Add your no-code tools
+### Featured project spotlight
 
-The No-code platforms service lists Airtable, Supabase, make.com and n8n. Add the builders you actually use (for example Softr or Glide) to its `tools` array.
+`spotlight` in `content.js` drives the case study on the Home and Work pages (`components/Spotlight.jsx`): title, intro, stats, one card per platform with its link or download, and the tech list. Screenshots live in `public/media/projects/`.
 
 ## Moving from the old version
 
@@ -92,6 +92,7 @@ src/
     PageHeader.jsx         breadcrumb, big title and animated wire art
     NextPage.jsx           large link to the next page
     Services.jsx           home service cards
+    Spotlight.jsx          featured project case study (web, Android, Windows)
     Calculator.jsx         automation savings estimator
     BriefBuilder.jsx       three-step project brief
     Faq.jsx, CtaBand.jsx, QuickDock.jsx, motion/Rotator.jsx
@@ -102,6 +103,7 @@ public/
   img/sahil.webp, img/sahil.jpg   portrait
   Sahil_CV.pdf                    CV download
   media/                          project recordings
+  media/projects/                 project screenshots used as thumbnails
 vercel.json                        SPA rewrites for clean URLs
 ```
 
@@ -113,7 +115,7 @@ Everything you are likely to change is in `src/data/content.js`:
 - `pages`: nav label, browser title, description, page title lines and intro for each page
 - `hero` (lead, rotating words, tail, intro), `statement`, `focus`, `workSteps`, `highlights`
 - `services`, `engagement`, `faqs`, `briefOptions`
-- `projects`, `repos`, `experience`, `skills`
+- `projects` (each can have `live`, `link`, `badge` and a `media` screenshot), `spotlight`, `repos`, `experience`, `skills`
 
 To add a page: create it in `src/pages/`, add an entry to `pages` in `content.js`, and register it in `ROUTES` in `src/App.jsx`.
 
